@@ -6,5 +6,5 @@ defmodule Chifoumi.Router do
     Chifoumi.PlayerJoinsGame,
     Chifoumi.PlayerLeavesGame,
     Chifoumi.PlayerPlays,
-  ], to: Chifoumi.Game, identity: :game_id)
+  ], to: Chifoumi.Game, identity: :game_id, lifespan: Chifoumi.GameLifespan)
 end
