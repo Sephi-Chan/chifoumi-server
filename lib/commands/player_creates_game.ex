@@ -8,4 +8,9 @@ defmodule Chifoumi.PlayerCreatesGame do
       target_score: command.target_score
     }
   end
+
+
+  def execute(_game, _command) do
+    {:error, :game_id_is_taken}
+  end
 end

@@ -11,6 +11,12 @@ defmodule ChifoumiTest do
   end
 
 
+  test "Player can't reuse the same ID." do
+    :ok = Chifoumi.Application.dispatch(%Chifoumi.PlayerCreatesGame{game_id: "42", creator_id: "Corwin", target_score: 3})
+    {:error, :game_id_is_taken} = Chifoumi.Application.dispatch(%Chifoumi.PlayerCreatesGame{game_id: "42", creator_id: "Corwin", target_score: 3})
+  end
+
+
   test "Player can join a game once. Only two players per game." do
     :ok = Chifoumi.Application.dispatch(%Chifoumi.PlayerCreatesGame{game_id: "42", creator_id: "Corwin", target_score: 3})
     {:error, :already_joined} = Chifoumi.Application.dispatch(%Chifoumi.PlayerJoinsGame{game_id: "42", player_id: "Corwin"})
